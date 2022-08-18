@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Models\Pelanggan;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -36,7 +38,11 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-
+$routes->get('/pelanggan', 'PelangganController::index');
+$routes->get('/fpelanggan','PelangganController::create');
+$routes->add('addPelanggan','PelangganController::save');
+$routes->get('/pelanggan/delete/(:segment)','PelangganController::delete/$1');
+$routes->add('/pelanggan/edit/(:segment)','PelangganController::edit/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
